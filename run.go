@@ -5,6 +5,6 @@ import (
 )
 
 func main() {
-	var file = readFile("file.txt")
-	fmt.Println(file)
+	var solution1 = solveExercise1()
+	fmt.Println(solution1)
 }
