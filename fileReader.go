@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strconv"
 )
 
 func readFile(path string) (fileLines []string) {
@@ -22,4 +23,22 @@ func readFile(path string) (fileLines []string) {
 		log.Fatal(err)
 	}
 	return fileLines
+}
+
+func readNumbersOfFile(path string) (numbers []int) {
+	var fileStrings = readFile(path)
+	for _, value := range fileStrings {
+		number := strToInt(value)
+		if number != -1 {
+			numbers = append(numbers, number)
+		}
+	}
+	return
+}
+
+func strToInt(numberAsText string) int {
+	if i, err := strconv.Atoi(numberAsText); err == nil {
+		return i
+	}
+	return -1
 }
