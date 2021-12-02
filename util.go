@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"reflect"
 	"strconv"
 )
 
@@ -41,4 +42,16 @@ func strToInt(numberAsText string) int {
 		return i
 	}
 	return -1
+}
+
+func callFunction(funcName interface{}, params ...interface{}) {
+	f := reflect.ValueOf(funcName)
+	if len(params) != f.Type().NumIn() {
+		return
+	}
+	in := make([]reflect.Value, len(params))
+	for k, param := range params {
+		in[k] = reflect.ValueOf(param)
+	}
+	f.Call(in)
 }
