@@ -5,8 +5,6 @@ import (
 	"strconv"
 )
 
-//type getCommonAtPosition func(lines []string, index int) string
-
 func solveExercise3() (solution int64) {
 	lines := readFile("file3.txt")
 	digitCount := len(lines[0])
@@ -20,36 +18,25 @@ func solveExercise3() (solution int64) {
 	return
 }
 
-func solveExercise3b() (solution int64) {
-	gammaLines := readFile("file3.txt")
-	digitCount := len(gammaLines[0])
-	for i := 0; i < digitCount; i++ {
-		mostCommon := getMostCommonAtPosition(gammaLines, i)
-		gammaLines = reduceLinesByDigitAtPosition(gammaLines, strToInt(mostCommon), i)
-	}
-	epsilonLines := readFile("file3.txt")
-	for i := 0; i < digitCount; i++ {
-		if len(epsilonLines) == 1 {
-			break
-		}
-		lessCommon := getLessCommonAtPosition(epsilonLines, i)
-		epsilonLines = reduceLinesByDigitAtPosition(epsilonLines, strToInt(lessCommon), i)
-	}
-	gamma, _ := strconv.ParseInt(gammaLines[0], 2, 64)
-	epsilon, _ := strconv.ParseInt(epsilonLines[0], 2, 64)
-	solution = gamma * int64(epsilon)
-	return
+func solveExercise3b() int64 {
+	oxygenGeneratorRating := calculateRating(getMostCommonAtPosition)
+	co2ScrubberRating := calculateRating(getLessCommonAtPosition)
+	return oxygenGeneratorRating * co2ScrubberRating
 }
 
-/*ToDo
-func a(fn getCommonAtPosition) string {
-	gammaLines := readFile("file3.txt")
-	digitCount := len(gammaLines[0])
+func calculateRating(getCommonAtPosition func([]string, int) string) (solution int64) {
+	lines := readFile("file3.txt")
+	digitCount := len(lines[0])
 	for i := 0; i < digitCount; i++ {
-		mostCommon := getCommonAtPosition(gammaLines, i)
-		gammaLines = reduceLinesByDigitAtPosition(gammaLines, strToInt(mostCommon), i)
+		if len(lines) == 1 {
+			break
+		}
+		digitAtPosition := getCommonAtPosition(lines, i)
+		lines = reduceLinesByDigitAtPosition(lines, strToInt(digitAtPosition), i)
 	}
-}*/
+	solution, _ = strconv.ParseInt(lines[0], 2, 64)
+	return
+}
 
 func reduceLinesByDigitAtPosition(lines []string, digit int, position int) []string {
 	for i := len(lines) - 1; i >= 0; i-- {
