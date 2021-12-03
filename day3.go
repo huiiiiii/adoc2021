@@ -5,8 +5,8 @@ import (
 	"strconv"
 )
 
-func solveExercise3() (solution int64) {
-	lines := readFile("file3.txt")
+func solveExercise3(fileName string) (solution int64) {
+	lines := readFile(fileName)
 	digitCount := len(lines[0])
 	gammaInBin := ""
 	for i := 0; i < digitCount; i++ {
@@ -18,14 +18,14 @@ func solveExercise3() (solution int64) {
 	return
 }
 
-func solveExercise3b() int64 {
-	oxygenGeneratorRating := calculateRating(getMostCommonAtPosition)
-	co2ScrubberRating := calculateRating(getLessCommonAtPosition)
+func solveExercise3b(fileName string) int64 {
+	oxygenGeneratorRating := calculateRating(fileName, getMostCommonAtPosition)
+	co2ScrubberRating := calculateRating(fileName, getLessCommonAtPosition)
 	return oxygenGeneratorRating * co2ScrubberRating
 }
 
-func calculateRating(getCommonAtPosition func([]string, int) string) (solution int64) {
-	lines := readFile("file3.txt")
+func calculateRating(fileName string, getCommonAtPosition func([]string, int) string) (solution int64) {
+	lines := readFile(fileName)
 	digitCount := len(lines[0])
 	for i := 0; i < digitCount; i++ {
 		if len(lines) == 1 {
@@ -47,6 +47,7 @@ func reduceLinesByDigitAtPosition(lines []string, digit int, position int) []str
 	return lines
 }
 
+//changes order of array!
 func removeFromArray(lines []string, i int) []string {
 	lines[i] = lines[len(lines)-1]
 	return lines[:len(lines)-1]
