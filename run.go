@@ -5,12 +5,9 @@ import (
 )
 
 func main() {
-	solution2 := solveExercise2()
-	fmt.Println(solution2)
+	solution3 := solveExercise3()
+	fmt.Println(solution3)
 
-	solution2a := solveExercise2a()
-	fmt.Println(solution2a)
-
-	solution2b := solveExercise2b()
-	fmt.Println(solution2b)
+	solution3b := solveExercise3b()
+	fmt.Println(solution3b)
 }
