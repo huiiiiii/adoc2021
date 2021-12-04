@@ -41,14 +41,14 @@ func calculateRating(fileName string, getCommonAtPosition func([]string, int) st
 func reduceLinesByDigitAtPosition(lines []string, digit int, position int) []string {
 	for i := len(lines) - 1; i >= 0; i-- {
 		if getDigitAtPlace(lines[i], position) != digit {
-			lines = removeFromArray(lines, i)
+			lines = removeFromStringArray(lines, i)
 		}
 	}
 	return lines
 }
 
 //changes order of array!
-func removeFromArray(lines []string, i int) []string {
+func removeFromStringArray(lines []string, i int) []string {
 	lines[i] = lines[len(lines)-1]
 	return lines[:len(lines)-1]
 }
