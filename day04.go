@@ -2,7 +2,6 @@ package main
 
 import (
 	"sort"
-	"strings"
 )
 
 const bingoGridLength int = 5
@@ -55,7 +54,7 @@ func solveExercise4b(fileName string) (solution int) {
 }
 
 func linesToDrawnNumbersAndBingoGrids(lines []string) (drawnNumbers []int, bingos []Bingo) {
-	drawnNumbers = stringToNumbers(lines[0], ",")
+	drawnNumbers = strToInts(lines[0], ",")
 	for i := 2 + bingoGridLength; i <= len(lines); i += bingoGridLength + 1 {
 		linesForBingo := lines[i-bingoGridLength : i]
 		bingos = append(bingos, linesToBingo(linesForBingo))
@@ -63,20 +62,9 @@ func linesToDrawnNumbersAndBingoGrids(lines []string) (drawnNumbers []int, bingo
 	return
 }
 
-func stringToNumbers(line string, sep string) (drawnNumbers []int) {
-	lineArray := strings.Split(line, sep)
-	for _, number := range lineArray {
-		if number == "" {
-			continue
-		}
-		drawnNumbers = append(drawnNumbers, strToInt(number))
-	}
-	return
-}
-
 func linesToBingo(lines []string) (bingo Bingo) {
 	for _, line := range lines {
-		lineNumbers := stringToNumbers(line, " ")
+		lineNumbers := strToInts(line, " ")
 		bingo.grid = append(bingo.grid, lineNumbers)
 	}
 	return

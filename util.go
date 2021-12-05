@@ -3,8 +3,10 @@ package main
 import (
 	"bufio"
 	"log"
+	"math"
 	"os"
 	"strconv"
+	"strings"
 )
 
 func readFile(path string) (fileLines []string) {
@@ -41,4 +43,40 @@ func strToInt(numberAsText string) int {
 		return i
 	}
 	return -1
+}
+
+func strToInts(line string, sep string) (drawnNumbers []int) {
+	lineArray := strings.Split(line, sep)
+	for _, number := range lineArray {
+		if number == "" {
+			continue
+		}
+		drawnNumbers = append(drawnNumbers, strToInt(number))
+	}
+	return
+}
+
+func getMax(x, y int) int {
+	if x < y {
+		return y
+	}
+	return x
+}
+
+func getMin(x, y int) int {
+	if x > y {
+		return y
+	}
+	return x
+}
+
+func getEmptyIntArray(length int) (array []int) {
+	for i := 0; i <= length; i++ {
+		array = append(array, 0)
+	}
+	return
+}
+
+func almostEqual(a, b float64, tolerance float64) bool {
+	return math.Abs(a-b) <= tolerance
 }

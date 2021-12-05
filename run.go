@@ -5,9 +5,9 @@ import (
 )
 
 func main() {
-	solution4 := solveExercise4("file04.txt")
-	fmt.Println(solution4)
+	solution := solveExercise5("file05.txt")
+	fmt.Println(solution)
 
-	solution4b := solveExercise4b("file04.txt")
-	fmt.Println(solution4b)
+	solutionb := solveExercise5b("file05.txt")
+	fmt.Println(solutionb)
 }
