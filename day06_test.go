@@ -12,7 +12,6 @@ func TestExercise6(t *testing.T) {
 	}
 }
 
-/* test timed out after 30s
 func TestExercise6b(t *testing.T) {
 	expected := 26984457539
 	actual := solveExercise6b("file06_test.txt")
@@ -20,4 +19,3 @@ func TestExercise6b(t *testing.T) {
 		t.Fatalf("Was not the right solution. Expected %d, but was actual %d", expected, actual)
 	}
 }
-*/
