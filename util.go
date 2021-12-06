@@ -45,13 +45,13 @@ func strToInt(numberAsText string) int {
 	return -1
 }
 
-func strToInts(line string, sep string) (drawnNumbers []int) {
+func strToInts(line string, sep string) (numbers []int) {
 	lineArray := strings.Split(line, sep)
 	for _, number := range lineArray {
 		if number == "" {
 			continue
 		}
-		drawnNumbers = append(drawnNumbers, strToInt(number))
+		numbers = append(numbers, strToInt(number))
 	}
 	return
 }
