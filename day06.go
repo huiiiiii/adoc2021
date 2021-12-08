@@ -11,7 +11,6 @@ func solveExercise6(fileName string) (solution int) {
 	return
 }
 
-//ToDo needs improvement, runs too long
 func solveExercise6b(fileName string) (solution int) {
 	const daysToSimulate int = 256
 	lines := readFile(fileName)
