@@ -70,7 +70,7 @@ func calculateVentsDiagram(linesOfVents []LineOfVents) (ventsDiagram [][]int) {
 func initEmptyVentsDiagram(linesOfVents []LineOfVents) (ventsDiagram [][]int) {
 	xMax, yMax := getMaxCoordinates(linesOfVents)
 	for x := 0; x <= xMax; x++ {
-		ventsDiagram = append(ventsDiagram, getEmptyIntArray(yMax))
+		ventsDiagram = append(ventsDiagram, getEmptyIntArray(yMax, 0))
 	}
 	return
 }

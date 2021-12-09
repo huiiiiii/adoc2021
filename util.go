@@ -71,9 +71,9 @@ func getMin(x, y int) int {
 	return x
 }
 
-func getEmptyIntArray(length int) (array []int) {
+func getEmptyIntArray(length int, initialValue int) (array []int) {
 	for i := 0; i <= length; i++ {
-		array = append(array, 0)
+		array = append(array, initialValue)
 	}
 	return
 }
