@@ -5,6 +5,7 @@ import (
 	"log"
 	"math"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -79,4 +80,10 @@ func getEmptyIntArray(length int) (array []int) {
 
 func almostEqual(a, b float64, tolerance float64) bool {
 	return math.Abs(a-b) <= tolerance
+}
+
+func SortString(chars string) string {
+	s := strings.Split(chars, "")
+	sort.Strings(s)
+	return strings.Join(s, "")
 }
